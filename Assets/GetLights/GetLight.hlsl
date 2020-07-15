@@ -1,3 +1,41 @@
+//#include "Packages/com.unity.render-pipelines.universal/Shaders/LitForwardPass.hlsl"
+//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl"
+
+void GetLightingPBR_half(half3 positionWS, half3 normalWS, half3 viewWS,
+     half3 base, half metallic, half smoothness, out half3 outColor
+)
+{
+#if SHADERGRAPH_PREVIEW
+    outColor = 1;
+#else    
+    BRDFData brdfData;
+    InitializeBRDFData(base, metallic, 0., smoothness, 1., brdfData);
+    float4 shadowCoord = TransformWorldToShadowCoord(positionWS);
+    float3 bakedGI = float3(0, 0, 0);
+    
+    Light mainLight = GetMainLight(shadowCoord);
+    ShadowSamplingData shadowSamplingData = GetMainLightShadowSamplingData();
+    half shadowStrength = GetMainLightShadowStrength();
+    mainLight.shadowAttenuation = SampleShadowmap(shadowCoord, TEXTURE2D_ARGS(_MainLightShadowmapTexture,
+            sampler_MainLightShadowmapTexture),
+            shadowSamplingData, shadowStrength, false);
+
+    half3 color = GlobalIllumination(brdfData, bakedGI, 1.0, normalWS, viewWS)
+                + LightingPhysicallyBased(brdfData, mainLight, normalWS, viewWS);
+    
+#ifndef SHADERGRAPH_PREVIEW
+    uint pixelLightCount = GetAdditionalLightsCount();
+    for (uint lightIndex = 0u; lightIndex < pixelLightCount; ++lightIndex)
+    {
+        Light light = GetAdditionalLight(lightIndex, positionWS);
+        color += LightingPhysicallyBased(brdfData, light, normalWS, viewWS);
+    }
+
+    outColor = color;
+#endif
+#endif
+}
+
 void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out half DistanceAtten, out half ShadowAtten)
 {
 #if SHADERGRAPH_PREVIEW
@@ -12,7 +50,7 @@ void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out h
     Color = mainLight.color;
     DistanceAtten = mainLight.distanceAttenuation;
  
-    ShadowAtten = mainLight.shadowAttenuation;
+    //ShadowAtten = mainLight.shadowAttenuation;
  
     ShadowSamplingData shadowSamplingData = GetMainLightShadowSamplingData();
     half shadowStrength = GetMainLightShadowStrength();
