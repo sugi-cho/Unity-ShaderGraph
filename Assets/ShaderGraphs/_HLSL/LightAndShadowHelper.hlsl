@@ -82,3 +82,16 @@ void AdditionalLights_half(half3 SpecColor, half Smoothness, half3 WorldPosition
     Diffuse = diffuseColor;
     Specular = specularColor;
 }
+
+sampler3D _DitherMaskLOD;
+void DitheringShadow_half(half alpha, half2 screenPos, bool shadowCascaded, out half outAlpha, out half clipThreshold)
+{
+    outAlpha = alpha;
+    clipThreshold = 0;
+#ifdef SHADERPASS_SHADOWCASTER
+    half2 vpos = screenPos * _MainLightShadowmapSize.z;
+    vpos *= shadowCascaded? 0.5 : 1;
+    outAlpha = tex3D(_DitherMaskLOD, float3(vpos.xy * 0.25, alpha * 0.9375)).a;
+    clipThreshold = 0.5;
+#endif
+}

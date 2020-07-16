@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve
-  m_Shader: {fileID: -6465566751694194690, guid: dca7c34fee22767458d1b59822769762,
+  m_Name: TransparentShadow
+  m_Shader: {fileID: -6465566751694194690, guid: 97b681efac4e0654db87998b2fc33f24,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,10 +19,11 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _DitherMaskLOD2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_9C15C42D: 4
-    - _DissolveFade: 0.415
-    - _EdgeSize: 0.05
-    m_Colors:
-    - _EdgeEmission: {r: 0.43055123, g: 0.7749923, b: 1.5948423, a: 1}
+    - Vector1_70F6D72D: 0.932
+    m_Colors: []

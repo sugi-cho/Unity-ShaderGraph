@@ -7,9 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve
-  m_Shader: {fileID: -6465566751694194690, guid: dca7c34fee22767458d1b59822769762,
-    type: 3}
+  m_Name: Unlit_DitherMASK
+  m_Shader: {fileID: 4800000, guid: b8663187a007d8c4a9dad93bdba87623, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -21,8 +20,5 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - Vector1_9C15C42D: 4
-    - _DissolveFade: 0.415
-    - _EdgeSize: 0.05
-    m_Colors:
-    - _EdgeEmission: {r: 0.43055123, g: 0.7749923, b: 1.5948423, a: 1}
+    - _Alpha: 0.785
+    m_Colors: []
