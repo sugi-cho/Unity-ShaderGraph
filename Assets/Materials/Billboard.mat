@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TransparentShadow
-  m_Shader: {fileID: -6465566751694194690, guid: 97b681efac4e0654db87998b2fc33f24,
+  m_Name: Billboard
+  m_Shader: {fileID: -6465566751694194690, guid: 61dae619e59b19840a7056519ddadd43,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,10 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DitherMaskLOD2D:
-        m_Texture: {fileID: 0}
+    - Texture2D_19A2A909:
+        m_Texture: {fileID: 2800000, guid: b1db63a69e66cbb49bbfec1487d286af, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_70F6D72D: 1
-    m_Colors: []
+    m_Floats: []
+    m_Colors:
+    - Vector3_64ED3537: {r: 0, g: 0, b: -5, a: 1}
