@@ -1,6 +1,7 @@
 //#include "Packages/com.unity.render-pipelines.universal/Shaders/LitForwardPass.hlsl"
 //#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl"
 
+
 void GetLightingPBR_half(half3 positionWS, half3 normalWS, half3 viewWS,
      half3 base, half metallic, half smoothness, out half3 outColor
 )
@@ -44,7 +45,9 @@ void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out h
     DistanceAtten = 1;
     ShadowAtten = 1;
 #else
-    half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
+    
+    half cascadeIndex = ComputeCascadeIndex(WorldPos);
+    half4 shadowCoord = mul(_MainLightWorldToShadow[cascadeIndex], float4(WorldPos, 1.0)); //TransformWorldToShadowCoord(WorldPos);
     Light mainLight = GetMainLight(shadowCoord);
     Direction = mainLight.direction;
     Color = mainLight.color;
