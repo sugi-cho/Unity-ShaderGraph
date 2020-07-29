@@ -11,7 +11,8 @@ void GetLightingPBR_half(half3 positionWS, half3 normalWS, half3 viewWS,
 #else    
     BRDFData brdfData;
     InitializeBRDFData(base, metallic, 0., smoothness, 1., brdfData);
-    float4 shadowCoord = TransformWorldToShadowCoord(positionWS);
+    half cascadeIndex = ComputeCascadeIndex(positionWS);
+    half4 shadowCoord = mul(_MainLightWorldToShadow[cascadeIndex], float4(positionWS, 1.0)); //TransformWorldToShadowCoord(WorldPos);
     float3 bakedGI = float3(0, 0, 0);
     
     Light mainLight = GetMainLight(shadowCoord);

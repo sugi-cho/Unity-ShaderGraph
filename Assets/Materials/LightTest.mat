@@ -53,8 +53,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1731F222: 0
-    - Vector1_DB6C903E: 1.27
+    - Vector1_1731F222: 0.8
+    - Vector1_DB6C903E: 4
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -70,7 +70,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SPECULAR_SETUP: 0
-    - _Smoothness: 0.559
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -78,11 +78,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_43977384: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0}
+    - Color_43977384: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
 --- !u!114 &5681301604202789969
 MonoBehaviour:
   m_ObjectHideFlags: 11

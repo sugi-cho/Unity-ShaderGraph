@@ -13,14 +13,7 @@
             "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"78bbc638-a2b9-42fc-b14e-893fc1a5c8b8\"\n    },\n    \"m_Name\": \"Texture2D\",\n    \"m_DefaultReferenceName\": \"Texture2D_325C947E\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"m_SerializedTexture\": \"{\\\"texture\\\":{\\\"instanceID\\\":0}}\",\n        \"m_Guid\": \"\"\n    },\n    \"m_Modifiable\": true,\n    \"m_DefaultType\": 0\n}"
         }
     ],
-    "m_SerializedKeywords": [
-        {
-            "typeInfo": {
-                "fullName": "UnityEditor.ShaderGraph.ShaderKeyword"
-            },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"85058755-b29b-41a6-bd1b-4f26a120da9d\"\n    },\n    \"m_Name\": \"Boolean\",\n    \"m_DefaultReferenceName\": \"BOOLEAN_2B878B25_ON\",\n    \"m_OverrideReferenceName\": \"_MAIN_LIGHT_SHADOWS_CASCADE\",\n    \"m_GeneratePropertyBlock\": false,\n    \"m_KeywordType\": 0,\n    \"m_KeywordDefinition\": 1,\n    \"m_KeywordScope\": 1,\n    \"m_Entries\": [],\n    \"m_Value\": 0,\n    \"m_IsEditable\": true,\n    \"m_IsExposable\": true\n}"
-        }
-    ],
+    "m_SerializedKeywords": [],
     "m_SerializableNodes": [
         {
             "typeInfo": {

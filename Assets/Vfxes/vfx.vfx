@@ -17,10 +17,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 564
+    x: 674
     y: -190
-    width: 801
-    height: 1365
+    width: 691
+    height: 1710
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614555}
   - {fileID: 8926484042661614558}
-  - {fileID: 8926484042661614583}
+  - {fileID: 8926484042661614836}
   - {fileID: 8926484042661614633}
   - {fileID: 8926484042661614704}
   m_UIPosition: {x: 0, y: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 512
+      m_SerializableObject: 2048
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -201,7 +201,7 @@ MonoBehaviour:
       slotIndex: 0
   m_OutputFlowSlot:
   - link:
-    - context: {fileID: 8926484042661614583}
+    - context: {fileID: 8926484042661614836}
       slotIndex: 0
 --- !u!114 &8926484042661614559
 MonoBehaviour:
@@ -548,10 +548,10 @@ MonoBehaviour:
   title: 
   m_Owners:
   - {fileID: 8926484042661614558}
-  - {fileID: 8926484042661614583}
+  - {fileID: 8926484042661614836}
   - {fileID: 8926484042661614633}
   dataType: 0
-  capacity: 512
+  capacity: 8192
   stripCapacity: 16
   particlePerStripCount: 16
   m_Space: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":-0.3330000042915344,"y":0.20000000298023225,"z":-0.3330000042915344}}'
+      m_SerializableObject: '{"vector":{"x":-1.0,"y":-1.0,"z":-1.0}}'
     m_Space: 0
   m_Property:
     name: A
@@ -789,7 +789,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":0.3330000042915344,"y":1.0,"z":0.3330000042915344}}'
+      m_SerializableObject: '{"vector":{"x":1.0,"y":1.0,"z":1.0}}'
     m_Space: 0
   m_Property:
     name: B
@@ -1055,39 +1055,6 @@ MonoBehaviour:
       m_RegexMaxLength: 0
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661614583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dc095764ededfa4bb32fa602511ea4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Parent: {fileID: 114350483966674976}
-  m_Children: []
-  m_UIPosition: {x: 939, y: 629}
-  m_UICollapsed: 0
-  m_UISuperCollapsed: 0
-  m_InputSlots: []
-  m_OutputSlots: []
-  m_Label: 
-  m_Data: {fileID: 8926484042661614568}
-  m_InputFlowSlot:
-  - link:
-    - context: {fileID: 8926484042661614558}
-      slotIndex: 0
-  m_OutputFlowSlot:
-  - link:
-    - context: {fileID: 8926484042661614633}
-      slotIndex: 0
-  integration: 0
-  angularIntegration: 0
-  ageParticles: 1
-  reapParticles: 1
 --- !u!114 &8926484042661614633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,7 +1070,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661614639}
-  m_UIPosition: {x: 923, y: 825}
+  m_UIPosition: {x: 937, y: 1170}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -1116,7 +1083,7 @@ MonoBehaviour:
   m_Data: {fileID: 8926484042661614568}
   m_InputFlowSlot:
   - link:
-    - context: {fileID: 8926484042661614583}
+    - context: {fileID: 8926484042661614836}
       slotIndex: 0
   m_OutputFlowSlot:
   - link: []
@@ -1676,7 +1643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 742, y: 967}
+  m_UIPosition: {x: 674, y: 1223}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -2714,3 +2681,36 @@ MonoBehaviour:
     attributes: []
   m_Direction: 0
   m_LinkedSlots: []
+--- !u!114 &8926484042661614836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc095764ededfa4bb32fa602511ea4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Parent: {fileID: 114350483966674976}
+  m_Children: []
+  m_UIPosition: {x: 940, y: 720}
+  m_UICollapsed: 0
+  m_UISuperCollapsed: 0
+  m_InputSlots: []
+  m_OutputSlots: []
+  m_Label: 
+  m_Data: {fileID: 8926484042661614568}
+  m_InputFlowSlot:
+  - link:
+    - context: {fileID: 8926484042661614558}
+      slotIndex: 0
+  m_OutputFlowSlot:
+  - link:
+    - context: {fileID: 8926484042661614633}
+      slotIndex: 0
+  integration: 0
+  angularIntegration: 0
+  ageParticles: 1
+  reapParticles: 1
