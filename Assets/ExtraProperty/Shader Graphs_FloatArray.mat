@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_ComputeBufferTest
-  m_Shader: {fileID: -6465566751694194690, guid: 762fa724785e9164286eb989fdd0d161,
+  m_Name: Shader Graphs_FloatArray
+  m_Shader: {fileID: -6465566751694194690, guid: e86918904f30b104697f9b2c98010419,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

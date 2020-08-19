@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ClipToLocal
-  m_Shader: {fileID: -6465566751694194690, guid: 2a88ed1a8d975684faf358c6ed560ad7,
+  m_Name: Shader Graphs_ComputeBufferTest
+  m_Shader: {fileID: -6465566751694194690, guid: 762fa724785e9164286eb989fdd0d161,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,7 +20,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats: []
-    m_Colors:
-    - Vector3_D222B8B2: {r: 0.4, g: 0.75, b: 1, a: 0}
+    m_Floats:
+    - Vector1_E263992E: 0
+    - _BufferCount: 4
+    m_Colors: []
   m_BuildTextureStacks: []
