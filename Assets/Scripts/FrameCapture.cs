@@ -6,15 +6,18 @@ public class FrameCapture : ScriptableRendererFeature
 {
     class CustomRenderPass : ScriptableRenderPass
     {
-        Material blitMat;
+        FrameCaptureSetting setting;
+        Material blitMat => setting.blitMat.value;
         RenderTargetIdentifier source;
         CameraData cameraData;
         RenderTextureDescriptor sourceDesc;
-        public void Setup(Material mat, ScriptableRenderer renderer, RenderingData renderingData)
+        public void Setup(ScriptableRenderer renderer, RenderingData renderingData)
         {
-            blitMat = mat;
+            if (setting == null)
+                setting = VolumeManager.instance.stack.GetComponent<FrameCaptureSetting>();
             source = renderer.cameraColorTarget;
             cameraData = renderingData.cameraData;
+            renderPassEvent = setting.Event.value;
         }
 
         // This method is called before executing the render pass.
@@ -36,6 +39,9 @@ public class FrameCapture : ScriptableRendererFeature
         // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            if (setting == null || !setting.IsActive())
+                return;
+
             var cmd = CommandBufferPool.Get("FrameCapture");
             var tmpSource = Shader.PropertyToID("_TmpSource");
             cmd.GetTemporaryRT(tmpSource, sourceDesc);
@@ -53,25 +59,18 @@ public class FrameCapture : ScriptableRendererFeature
     }
 
     CustomRenderPass m_ScriptablePass;
-    public RenderPassEvent Event = RenderPassEvent.AfterRenderingPostProcessing;
-    public Material blitMat;
 
     public override void Create()
     {
         m_ScriptablePass = new CustomRenderPass();
-
-        // Configures where the render pass should be injected.
-        m_ScriptablePass.renderPassEvent = Event;
     }
 
     // Here you can inject one or multiple render passes in the renderer.
     // This method is called when setting up the renderer once per-camera.
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        Debug.Log(renderingData.cameraData.cameraTargetDescriptor.colorFormat);
-        m_ScriptablePass.Setup(blitMat, renderer, renderingData);
+        m_ScriptablePass.Setup(renderer, renderingData);
         renderer.EnqueuePass(m_ScriptablePass);
     }
 }
-
 
