@@ -50,5 +50,5 @@ MonoBehaviour:
   m_Name: NewFrameCapture
   m_EditorClassIdentifier: 
   m_Active: 1
-  Event: 600
+  Event: 450
   blitMat: {fileID: 2100000, guid: 480ba0fef42159d43a0becc58898b58c, type: 2}
