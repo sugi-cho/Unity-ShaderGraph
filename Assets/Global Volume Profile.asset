@@ -20,11 +20,11 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 30
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.5
     min: 0
     max: 1
   clamp:
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   Event:
     m_OverrideState: 1
-    m_Value: 300
+    m_Value: 1000
   blitTarget:
     m_OverrideState: 1
     m_Value: {fileID: 8400000, guid: dc4d3c99b67b1e144a8a7987bb56f9b0, type: 2}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
 --- !u!114 &7688502584759115253
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -6,9 +6,27 @@ public class FrameCapture : ScriptableRendererFeature
 {
     class CustomRenderPass : ScriptableRenderPass
     {
+        public CustomRenderPass()
+        {
+            m_CameraColorAttachment.Init("_CameraColorTexture");
+            m_CameraDepthAttachment.Init("_CameraDepthAttachment");
+            m_DepthTexture.Init("_CameraDepthTexture");
+            m_OpaqueColor.Init("_CameraOpaqueTexture");
+            m_AfterPostProcessColor.Init("_AfterPostProcessTexture");
+            m_ColorGradingLut.Init("_InternalGradingLut");
+        }
+
+        RenderTargetHandle m_CameraColorAttachment;
+        RenderTargetHandle m_CameraDepthAttachment;
+        RenderTargetHandle m_DepthTexture;
+        RenderTargetHandle m_OpaqueColor;
+        RenderTargetHandle m_AfterPostProcessColor;
+        RenderTargetHandle m_ColorGradingLut;
+
         FrameCaptureSetting setting;
         Material blitMat => setting.blitMat.value;
         RenderTargetIdentifier source;
+        RenderTargetIdentifier dist;
         CameraData cameraData;
         RenderTextureDescriptor sourceDesc;
         public void Setup(ScriptableRenderer renderer, RenderingData renderingData)
@@ -18,6 +36,7 @@ public class FrameCapture : ScriptableRendererFeature
             source = renderer.cameraColorTarget;
             cameraData = renderingData.cameraData;
             renderPassEvent = setting.Event.value;
+            dist = new RenderTargetIdentifier(setting.blitTarget.value);
         }
 
         // This method is called before executing the render pass.
@@ -45,9 +64,9 @@ public class FrameCapture : ScriptableRendererFeature
             var cmd = CommandBufferPool.Get("FrameCapture");
             var tmpSource = Shader.PropertyToID("_TmpSource");
             cmd.GetTemporaryRT(tmpSource, sourceDesc);
-            Blit(cmd, source, tmpSource, blitMat);
-            Blit(cmd, tmpSource, source);
-            Blit(cmd, tmpSource, BuiltinRenderTextureType.CameraTarget);
+            Blit(cmd, m_AfterPostProcessColor.id, tmpSource, blitMat);
+            Blit(cmd, tmpSource, dist);
+            //            Blit(cmd, tmpSource, BuiltinRenderTextureType.CameraTarget);
             cmd.ReleaseTemporaryRT(tmpSource);
             context.ExecuteCommandBuffer(cmd);
         }
