@@ -1329,7 +1329,7 @@
     ],
     "synonyms": [],
     "m_Precision": 2,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_CustomColors": {
         "m_SerializableColors": []
     },

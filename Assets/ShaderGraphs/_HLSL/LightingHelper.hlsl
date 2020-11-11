@@ -76,6 +76,7 @@ out half4 color)
 #ifdef SHADERGRAPH_PREVIEW
     color = 1;
 #else
+    smoothness = exp2(10 * smoothness + 1);
     half4 positionCS = TransformWorldToHClip(positionWS);
     half cascadeIndex = ComputeCascadeIndex(positionWS);
     half4 shadowCoord = mul(_MainLightWorldToShadow[cascadeIndex], float4(positionWS, 1.0));
@@ -91,7 +92,7 @@ out half4 color)
     inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(positionCS);
     inputData.shadowMask = half4(1, 1, 1, 1);
     
-    color = UniversalFragmentBlinnPhong(inputData, diffuse, specular, specular.a, emission, 1.);
+    color = UniversalFragmentBlinnPhong(inputData, diffuse, specular, smoothness, emission, 1.);
 #endif
 
 }

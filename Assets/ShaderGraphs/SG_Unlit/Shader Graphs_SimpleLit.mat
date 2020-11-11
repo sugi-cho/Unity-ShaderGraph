@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shader Graphs_SimpleLit
-  m_Shader: {fileID: -6465566751694194690, guid: 1336ee6539933d545b980f6ebfcd5919,
+  m_Shader: {fileID: -6465566751694194690, guid: 452ba594afde7ea4ebe3cb2ed98da369,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,6 +20,30 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_36F5CE87:
+        m_Texture: {fileID: 2800000, guid: 967a8f4decf2a0942a59e4d0a5e702ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -33,10 +57,33 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_a7ba7ecba106424581c4deb7b6c5a960: 0.861
+    - Vector1_1731F222: 0
+    - Vector1_DB6C903E: 0.3
+    - Vector1_a7ba7ecba106424581c4deb7b6c5a960: 0
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BumpScale: 1
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DstBlend: 0
+    - _GlossinessSource: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Shininess: 0
+    - _Smoothness: 0.5
+    - _SmoothnessSource: 0
+    - _SpecSource: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _ZWrite: 1
     m_Colors:
-    - Color_a23868e4df14435b8d9dd594db2a6341: {r: 0.8773585, g: 0.8773585, b: 0.8773585,
-        a: 0}
-    - Color_d030b1c63c6e4d68adb8e291c6d4c020: {r: 0, g: 0.025922537, b: 1, a: 1}
+    - Color_43977384: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - Color_a23868e4df14435b8d9dd594db2a6341: {r: 1, g: 1, b: 1, a: 0}
+    - Color_d030b1c63c6e4d68adb8e291c6d4c020: {r: 0, g: 0, b: 0, a: 1}
     - Color_e0d05fdf272c4dc7b0386e6650f9d615: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
