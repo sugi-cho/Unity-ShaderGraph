@@ -1,3 +1,6 @@
+//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl"
+//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
 void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out half DistanceAtten, out half ShadowAtten)
 {
@@ -39,7 +42,7 @@ void AdditionalLights_half(half3 SpecColor, half Smoothness, half3 WorldPosition
     int pixelLightCount = GetAdditionalLightsCount();
     for (int i = 0; i < pixelLightCount; ++i)
     {
-        Light light = GetAdditionalLight(i, WorldPosition);
+        Light light = GetAdditionalLight(i, WorldPosition, half4(1,1,1,1));
         half3 attenuatedLightColor = light.color * (light.distanceAttenuation * light.shadowAttenuation);
         diffuseColor += LightingLambert(attenuatedLightColor, light.direction, WorldNormal);
         specularColor += LightingSpecular(attenuatedLightColor, light.direction, WorldNormal, WorldView, half4(SpecColor, 0), Smoothness);
@@ -63,4 +66,32 @@ void DitheringShadow_half(half alpha, half2 screenPos, bool shadowCascaded, out 
         clipThreshold = 0.5;
     }
 #endif
+}
+
+void SimpleLit_half(
+half3 positionWS, half3 normalWS,half2 uv1, half2 uv2, half3 viewDirectionWS,
+half3 diffuse, half4 specular, half smoothness, half3 emission,
+out half4 color)
+{
+#ifdef SHADERGRAPH_PREVIEW
+    color = 1;
+#else
+    half4 positionCS = TransformWorldToHClip(positionWS);
+    half cascadeIndex = ComputeCascadeIndex(positionWS);
+    half4 shadowCoord = mul(_MainLightWorldToShadow[cascadeIndex], float4(positionWS, 1.0));
+    
+    InputData inputData;
+    inputData.positionWS = positionWS;
+    inputData.normalWS = normalWS;
+    inputData.viewDirectionWS = viewDirectionWS;
+    inputData.shadowCoord = shadowCoord;
+    inputData.fogCoord = ComputeFogFactor(positionCS.z);
+    inputData.vertexLighting = half3(0, 0, 0);
+    inputData.bakedGI = shadergraph_LWBakedGI(positionWS, normalWS, uv1, uv2, true);
+    inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(positionCS);
+    inputData.shadowMask = half4(1, 1, 1, 1);
+    
+    color = UniversalFragmentBlinnPhong(inputData, diffuse, specular, specular.a, emission, 1.);
+#endif
+
 }
