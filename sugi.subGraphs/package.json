@@ -1,0 +1,10 @@
+{
+    "name": "sugi.subgraph", 
+    "displayName": "sugi.subgraph",     
+    "version": "0.0.1",               
+    "unity": "2021.1",               
+    "description": "",
+    "dependencies": {                 
+        
+    }
+}
