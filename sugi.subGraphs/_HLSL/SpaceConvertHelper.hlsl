@@ -10,3 +10,13 @@ void viewportToLocal_half(float3 viewportPos, out float3 localPos)
     viewPos.w = 1;
     localPos = mul(viewPos, UNITY_MATRIX_IT_MV).xyz;
 }
+
+void viewToClip_half(float3 viewPos, out float4 clipPos) 
+{
+    clipPos = TransformWViewToHClip(viewPos);
+}
+
+void clipToView_half(float4 clipPos, out float3 viewPos)
+{
+    viewPos = mul(UNITY_MATRIX_I_P, clipPos);
+}
